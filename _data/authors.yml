@@ -1,0 +1,22 @@
+# Authors
+#
+# Add an entry for every co-author that appears on your publications,
+# then reference them by key in the `authors` field of each publication file.
+# The entry keyed "Your Name" is also used for your own author bio box.
+
+Your Name:
+  name        : "Your Name"
+  uri         : "https://yourusername.github.io"
+  email       : "you@example.edu"
+  bio         : "Ph.D. candidate researching <your topic>."
+  avatar      : "profile.png"
+  github      : "yourusername"
+  googlescholar: "https://scholar.google.com/citations?user=REPLACE_ME"
+  orcid       : "https://orcid.org/0000-0000-0000-0000"
+
+# Co-Author Example:
+#   name        : "Collaborator Name"
+#   uri         : "https://collaborator.example.com"
+#   email       : "collab@example.edu"
+#   bio         : "Assistant Professor at Example University."
+#   avatar      : "bio-photo.jpg"
