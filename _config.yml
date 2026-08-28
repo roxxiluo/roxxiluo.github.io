@@ -13,10 +13,9 @@ title                    : "Your Name"
 title_separator          : "-"
 name                     : &name "Your Name"
 description              : &description "Your Name's academic homepage — research, publications, and CV"   # Update this with a general description of your site, this is the default if not overridden by a page
-url                      : https://yourusername.github.io # TODO: change to "https://[your GitHub username].github.io"
-                                                           # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
+url                      : https://polo-0831.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "yourusername/yourusername.github.io" # TODO: change to "[your GitHub username]/[your GitHub username].github.io"
+repository               : "polo-0831/polo-0831.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -51,7 +50,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "yourusername"   # TODO: your GitHub username
+  github           : "polo-0831"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
