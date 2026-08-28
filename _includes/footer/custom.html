@@ -1,6 +1,14 @@
 <!-- start custom footer snippets -->
 
-<!-- Support for MathJax -->
-<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
+<!-- Load MathJax after the page is shown so a slow jsDelivr CDN cannot keep the tab spinning. -->
+<script>
+  window.addEventListener("load", function () {
+    var script = document.createElement("script");
+    script.id = "MathJax-script";
+    script.src = "https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js";
+    script.async = true;
+    document.body.appendChild(script);
+  });
+</script>
 
 <!-- end custom footer snippets -->
