@@ -1,0 +1,39 @@
+/* ==========================================================================
+   SIDEBAR GLOBE
+   ========================================================================== */
+
+.sidebar-globe {
+  /* Below this width the sidebar is a row of table cells with no room to spare. */
+  display: none;
+
+  @media screen and (min-width: $sidebar-screen-min-width) {
+    display: block;
+    margin: 1.5em 0;
+  }
+}
+
+.globe-canvas {
+  position: relative;
+  width: 100%;
+  max-width: 175px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+
+  &.is-ready {
+    opacity: 1;
+  }
+
+  canvas {
+    display: block;
+  }
+}
+
+.globe-caption {
+  margin: 0.5em 0 0;
+  color: var(--global-text-color-light);
+  font-family: $sans-serif;
+  font-size: $type-size-7;
+  text-align: center;
+}

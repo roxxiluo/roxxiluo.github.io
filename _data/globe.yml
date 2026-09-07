@@ -1,0 +1,39 @@
+# 侧栏 3D 地球。不想要就把 enabled 改成 false。
+enabled: true
+
+# 地球下方的一行小字，留空则不显示
+caption: "Places I've been"
+
+# 页面打开时地球正对的经纬度
+focus:
+  lat: 30
+  lng: 110
+
+# 地球上的标记点，鼠标悬停会显示 name。
+# highlight: true 的点会多一圈扩散动画，适合标自己所在地。
+places:
+  - name: Beijing
+    lat: 39.9042
+    lng: 116.4074
+    color: "#ff9f43"
+    highlight: true
+  - name: Shanghai
+    lat: 31.2304
+    lng: 121.4737
+    color: "#54c7ec"
+  - name: Hong Kong
+    lat: 22.3193
+    lng: 114.1694
+    color: "#54c7ec"
+  - name: Singapore
+    lat: 1.3521
+    lng: 103.8198
+    color: "#5ef2c7"
+  - name: London
+    lat: 51.5074
+    lng: -0.1278
+    color: "#85f59e"
+  - name: New York
+    lat: 40.7128
+    lng: -74.0060
+    color: "#6bd1ff"
