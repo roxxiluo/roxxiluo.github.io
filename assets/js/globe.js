@@ -148,11 +148,6 @@
     label.textContent = place.name || '';
     label.style.setProperty('--city-color', place.color || DEFAULT_COLOR);
 
-    if (place.labelOffset) {
-      label.style.setProperty('--city-label-x', Number(place.labelOffset.x || 0) + 'px');
-      label.style.setProperty('--city-label-y', Number(place.labelOffset.y || 0) + 'px');
-    }
-
     anchor.appendChild(label);
     return anchor;
   }
