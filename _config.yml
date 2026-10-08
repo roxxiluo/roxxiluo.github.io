@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Your Name"
+title                    : "Ziqi Luo"
 title_separator          : "-"
-name                     : &name "Your Name"
-description              : &description "Your Name's academic homepage — research, publications, and CV"   # Update this with a general description of your site, this is the default if not overridden by a page
+name                     : &name "Ziqi Luo"
+description              : &description "Ziqi Luo's personal homepage — embodied AI, reinforcement learning, and vision-language-action models"
 url                      : https://roxxiluo.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "roxxiluo/roxxiluo.github.io"
@@ -22,14 +22,14 @@ repository               : "roxxiluo/roxxiluo.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"          # TODO: replace images/profile.png with your own photo (square, ~500x500)
-  name             : "Your Name"            # TODO: your name as shown in the sidebar
-  pronouns         : # example: "she/her"  
-  bio              : "Ph.D. candidate in <field>. I work on <research area>."   # TODO: 1-2 sentence sidebar bio
-  location         : "City, Country"        # TODO: your city/country
-  employer         : "Your University / Institute"  # TODO: current affiliation
-  uri              : # TODO: your personal website URL (if any)
-  email            : "you@example.edu"      # TODO: your email
+  avatar           : "profile.png"
+  name             : "Ziqi Luo"
+  pronouns         : "he/him"
+  bio              : "Do what you want and screw the rest."
+  location         : "Beijing, China"
+  employer         : "Beijing Innovation Center of Humanoid Robotics"
+  uri              :
+  email            : "lzq172312551@gmail.com"
 
   # Academic websites — fill in only the ones you have, leave others blank to hide the icon
   academia         : # URL

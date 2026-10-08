@@ -7,6 +7,10 @@ author_profile: true
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+{% if site.teaching.size > 0 %}
+  {% for post in site.teaching reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% else %}
+  <p>Coming soon.</p>
+{% endif %}

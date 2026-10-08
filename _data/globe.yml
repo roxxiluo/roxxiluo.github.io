@@ -17,23 +17,87 @@ places:
     lng: 116.4074
     color: "#ff9f43"
     highlight: true
+  - name: Guangzhou
+    lat: 23.1291
+    lng: 113.2644
+    color: "#ff9f43"
   - name: Shanghai
     lat: 31.2304
     lng: 121.4737
-    color: "#54c7ec"
+    color: "#ff9f43"
+  - name: Shenzhen
+    lat: 22.5431
+    lng: 114.0579
+    color: "#ff9f43"
+  - name: Chengdu
+    lat: 30.5728
+    lng: 104.0668
+    color: "#ff9f43"
+  - name: Nanjing
+    lat: 32.0603
+    lng: 118.7969
+    color: "#ff9f43"
   - name: Hong Kong
     lat: 22.3193
     lng: 114.1694
+    color: "#ff9f43"
+  - name: Macau
+    lat: 22.1987
+    lng: 113.5439
+    color: "#ff9f43"
+  - name: Taipei
+    lat: 25.0330
+    lng: 121.5654
+    color: "#ff9f43"
+  - name: Seoul
+    lat: 37.5665
+    lng: 126.9780
     color: "#54c7ec"
-  - name: Singapore
-    lat: 1.3521
-    lng: 103.8198
-    color: "#5ef2c7"
   - name: London
     lat: 51.5074
     lng: -0.1278
     color: "#85f59e"
-  - name: New York
-    lat: 40.7128
-    lng: -74.0060
-    color: "#6bd1ff"
+  - name: Bristol
+    lat: 51.4545
+    lng: -2.5879
+    color: "#85f59e"
+  - name: Edinburgh
+    lat: 55.9533
+    lng: -3.1883
+    color: "#85f59e"
+  - name: Paris
+    lat: 48.8566
+    lng: 2.3522
+    color: "#a78bfa"
+  - name: Monaco
+    lat: 43.7384
+    lng: 7.4246
+    color: "#a78bfa"
+  - name: Nice
+    lat: 43.7102
+    lng: 7.2620
+    color: "#a78bfa"
+  - name: Barcelona
+    lat: 41.3874
+    lng: 2.1686
+    color: "#fb7185"
+  - name: Madrid
+    lat: 40.4168
+    lng: -3.7038
+    color: "#fb7185"
+  - name: Brussels
+    lat: 50.8503
+    lng: 4.3517
+    color: "#60a5fa"
+  - name: Amsterdam
+    lat: 52.3676
+    lng: 4.9041
+    color: "#60a5fa"
+  - name: Tromsø
+    lat: 69.6492
+    lng: 18.9553
+    color: "#67e8f9"
+  - name: Auckland
+    lat: -36.8509
+    lng: 174.7645
+    color: "#5eead4"
