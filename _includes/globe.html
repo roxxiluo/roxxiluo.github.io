@@ -2,8 +2,9 @@
 
 {% assign globe = site.data.globe %}
 {% if globe.enabled %}
-  <div class="sidebar-globe">
-    <div class="globe-canvas" id="globe-root" role="img" aria-label="Rotating globe marking places I have been"></div>
+  <div class="sidebar-globe" id="globe-widget">
+    <div class="globe-canvas" id="globe-root" role="img" aria-label="Interactive globe showing places I have visited"></div>
+    <button class="globe-expand" id="globe-expand" type="button" aria-label="Open globe in fullscreen" title="View fullscreen">⛶</button>
     {% if globe.caption %}<p class="globe-caption">{{ globe.caption }}</p>{% endif %}
     <script type="application/json" id="globe-data">{{ globe | jsonify }}</script>
     <script src="{{ base_path }}/assets/js/globe.js" defer></script>

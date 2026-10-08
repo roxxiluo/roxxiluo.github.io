@@ -82,11 +82,69 @@
     };
   }
 
+  function fullscreenElement() {
+    return document.fullscreenElement || document.webkitFullscreenElement;
+  }
+
+  function setFullscreen(wrapper, expand) {
+    var action;
+    if (expand) {
+      action = wrapper.requestFullscreen || wrapper.webkitRequestFullscreen;
+      if (action) {
+        action.call(wrapper);
+      }
+    } else {
+      action = document.exitFullscreen || document.webkitExitFullscreen;
+      if (action) {
+        action.call(document);
+      }
+    }
+  }
+
+  function connectFullscreen(wrapper, container, button) {
+    var pointerStart = null;
+
+    function updateButton() {
+      var expanded = fullscreenElement() === wrapper;
+      button.textContent = expanded ? '×' : '⛶';
+      button.setAttribute('aria-label', expanded ? 'Close fullscreen globe' : 'Open globe in fullscreen');
+      button.title = expanded ? 'Close fullscreen' : 'View fullscreen';
+    }
+
+    button.addEventListener('click', function (event) {
+      event.stopPropagation();
+      setFullscreen(wrapper, fullscreenElement() !== wrapper);
+    });
+
+    // A click opens the globe; dragging still rotates it normally.
+    container.addEventListener('pointerdown', function (event) {
+      pointerStart = { x: event.clientX, y: event.clientY, time: Date.now() };
+    });
+    container.addEventListener('pointerup', function (event) {
+      if (!pointerStart || fullscreenElement() === wrapper) {
+        pointerStart = null;
+        return;
+      }
+      var distance = Math.hypot(event.clientX - pointerStart.x, event.clientY - pointerStart.y);
+      var elapsed = Date.now() - pointerStart.time;
+      pointerStart = null;
+      if (distance < 6 && elapsed < 500) {
+        setFullscreen(wrapper, true);
+      }
+    });
+
+    document.addEventListener('fullscreenchange', updateButton);
+    document.addEventListener('webkitfullscreenchange', updateButton);
+    updateButton();
+  }
+
   function build(container, config) {
     var places = (config.places || []).filter(function (place) {
       return typeof place.lat === 'number' && typeof place.lng === 'number';
     });
     var focus = config.focus || {};
+    var wrapper = container.closest('.sidebar-globe');
+    var expandButton = wrapper && wrapper.querySelector('.globe-expand');
     var size = Math.max(measure(container), MIN_SIZE);
 
     var globe = new Globe(container, { animateIn: false })
@@ -98,15 +156,17 @@
       .showAtmosphere(true)
       .atmosphereColor('lightskyblue')
       .atmosphereAltitude(0.18)
-      .pointsData(places)
-      .pointColor(function (place) {
+      .labelsData(places)
+      .labelLat('lat')
+      .labelLng('lng')
+      .labelText('name')
+      .labelColor(function (place) {
         return place.color || DEFAULT_COLOR;
       })
-      .pointAltitude(0.02)
-      .pointRadius(0.3)
-      .pointLabel(function (place) {
-        return place.name || '';
-      })
+      .labelAltitude(0.015)
+      .labelSize(0.55)
+      .labelDotRadius(0.22)
+      .labelResolution(2)
       .ringsData(places.filter(function (place) {
         return place.highlight;
       }))
@@ -133,6 +193,10 @@
     }).observe(container);
 
     container.classList.add('is-ready');
+    if (wrapper && expandButton) {
+      wrapper.classList.add('is-ready');
+      connectFullscreen(wrapper, container, expandButton);
+    }
   }
 
   function boot() {
