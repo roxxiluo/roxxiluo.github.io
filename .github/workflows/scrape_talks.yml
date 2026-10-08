@@ -1,11 +1,9 @@
 name: Scrape Talk Locations
 
 on:
-  push:
-    paths:
-      - 'talks/**'
-      - '_talks/**'
-      - 'talkmap.ipynb'
+  # The talk map is currently disabled in _config.yml. Keep this legacy helper
+  # available without failing every normal update to the talks collection.
+  workflow_dispatch:
 
 jobs:
   build:
