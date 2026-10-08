@@ -47,8 +47,8 @@
     place-items: center;
     border: 1px solid var(--global-border-color);
     border-radius: 50%;
-    background: var(--global-bg-color);
-    color: var(--global-text-color);
+    background: rgba(15, 23, 42, 0.78);
+    color: #fff;
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
@@ -60,8 +60,53 @@
   }
 
   .sidebar-globe.is-ready & {
-    opacity: 0.82;
+    opacity: 1;
   }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &__close {
+    display: none;
+  }
+
+  .sidebar-globe.is-expanded & {
+    &__open {
+      display: none;
+    }
+
+    &__close {
+      display: block;
+    }
+  }
+}
+
+.globe-city-label-anchor {
+  pointer-events: none;
+}
+
+.globe-city-label {
+  display: block;
+  transform: translate(var(--city-label-x, 7px), var(--city-label-y, -50%));
+  color: #fff;
+  font-family: $sans-serif;
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow:
+    -1px -1px 2px #020617,
+    1px -1px 2px #020617,
+    -1px 1px 2px #020617,
+    1px 1px 2px #020617,
+    0 0 5px var(--city-color);
 }
 
 .globe-caption {
@@ -92,7 +137,21 @@
 
     canvas {
       cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
     }
+  }
+
+  .globe-city-label {
+    font-size: 1rem;
+    text-shadow:
+      -1px -1px 3px #020617,
+      1px -1px 3px #020617,
+      -1px 1px 3px #020617,
+      1px 1px 3px #020617,
+      0 0 7px var(--city-color);
   }
 
   .globe-expand {

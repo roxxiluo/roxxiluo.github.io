@@ -101,14 +101,15 @@
     }
   }
 
-  function connectFullscreen(wrapper, container, button) {
+  function connectFullscreen(wrapper, container, button, onChange) {
     var pointerStart = null;
 
     function updateButton() {
       var expanded = fullscreenElement() === wrapper;
-      button.textContent = expanded ? '×' : '⛶';
+      wrapper.classList.toggle('is-expanded', expanded);
       button.setAttribute('aria-label', expanded ? 'Close fullscreen globe' : 'Open globe in fullscreen');
       button.title = expanded ? 'Close fullscreen' : 'View fullscreen';
+      onChange(expanded);
     }
 
     button.addEventListener('click', function (event) {
@@ -138,6 +139,24 @@
     updateButton();
   }
 
+  function createCityLabel(place) {
+    var anchor = document.createElement('div');
+    anchor.className = 'globe-city-label-anchor';
+
+    var label = document.createElement('span');
+    label.className = 'globe-city-label';
+    label.textContent = place.name || '';
+    label.style.setProperty('--city-color', place.color || DEFAULT_COLOR);
+
+    if (place.labelOffset) {
+      label.style.setProperty('--city-label-x', Number(place.labelOffset.x || 0) + 'px');
+      label.style.setProperty('--city-label-y', Number(place.labelOffset.y || 0) + 'px');
+    }
+
+    anchor.appendChild(label);
+    return anchor;
+  }
+
   function build(container, config) {
     var places = (config.places || []).filter(function (place) {
       return typeof place.lat === 'number' && typeof place.lng === 'number';
@@ -156,17 +175,19 @@
       .showAtmosphere(true)
       .atmosphereColor('lightskyblue')
       .atmosphereAltitude(0.18)
-      .labelsData(places)
-      .labelLat('lat')
-      .labelLng('lng')
-      .labelText('name')
-      .labelColor(function (place) {
+      .pointsData(places)
+      .pointColor(function (place) {
         return place.color || DEFAULT_COLOR;
       })
-      .labelAltitude(0.015)
-      .labelSize(0.55)
-      .labelDotRadius(0.22)
-      .labelResolution(2)
+      .pointAltitude(0.012)
+      .pointRadius(0.24)
+      .pointLabel('name')
+      .htmlElementsData(places)
+      .htmlLat('lat')
+      .htmlLng('lng')
+      .htmlAltitude(0.018)
+      .htmlElement(createCityLabel)
+      .htmlTransitionDuration(0)
       .ringsData(places.filter(function (place) {
         return place.highlight;
       }))
@@ -195,7 +216,12 @@
     container.classList.add('is-ready');
     if (wrapper && expandButton) {
       wrapper.classList.add('is-ready');
-      connectFullscreen(wrapper, container, expandButton);
+      connectFullscreen(wrapper, container, expandButton, function (expanded) {
+        // Avoid trapping normal page scrolling in the compact sidebar globe.
+        // Fullscreen mode enables wheel zoom and touch pinch zoom.
+        controls.enableZoom = expanded;
+        controls.enablePan = expanded;
+      });
     }
   }
 

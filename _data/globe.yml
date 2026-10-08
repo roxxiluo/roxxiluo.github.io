@@ -17,10 +17,28 @@ places:
     lng: 116.4074
     color: "#ff9f43"
     highlight: true
+  - name: Tianjin
+    lat: 39.3434
+    lng: 117.3616
+    color: "#ff9f43"
+    labelOffset:
+      x: 14
+      y: 14
+  - name: Xi'an
+    lat: 34.3416
+    lng: 108.9398
+    color: "#ff9f43"
+  - name: Qingdao
+    lat: 36.0671
+    lng: 120.3826
+    color: "#ff9f43"
   - name: Guangzhou
     lat: 23.1291
     lng: 113.2644
     color: "#ff9f43"
+    labelOffset:
+      x: -70
+      y: -24
   - name: Shanghai
     lat: 31.2304
     lng: 121.4737
@@ -33,6 +51,20 @@ places:
     lat: 30.5728
     lng: 104.0668
     color: "#ff9f43"
+  - name: Xining
+    lat: 36.6171
+    lng: 101.7782
+    color: "#ff9f43"
+    labelOffset:
+      x: 12
+      y: -24
+  - name: Qinghai
+    lat: 35.7452
+    lng: 95.9956
+    color: "#ff9f43"
+    labelOffset:
+      x: -54
+      y: 12
   - name: Nanjing
     lat: 32.0603
     lng: 118.7969
@@ -41,10 +73,16 @@ places:
     lat: 22.3193
     lng: 114.1694
     color: "#ff9f43"
+    labelOffset:
+      x: 18
+      y: 4
   - name: Macau
     lat: 22.1987
     lng: 113.5439
     color: "#ff9f43"
+    labelOffset:
+      x: -58
+      y: 18
   - name: Taipei
     lat: 25.0330
     lng: 121.5654

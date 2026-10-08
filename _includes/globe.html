@@ -4,7 +4,14 @@
 {% if globe.enabled %}
   <div class="sidebar-globe" id="globe-widget">
     <div class="globe-canvas" id="globe-root" role="img" aria-label="Interactive globe showing places I have visited"></div>
-    <button class="globe-expand" id="globe-expand" type="button" aria-label="Open globe in fullscreen" title="View fullscreen">⛶</button>
+    <button class="globe-expand" id="globe-expand" type="button" aria-label="Open globe in fullscreen" title="View fullscreen">
+      <svg class="globe-expand__open" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" />
+      </svg>
+      <svg class="globe-expand__close" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
     {% if globe.caption %}<p class="globe-caption">{{ globe.caption }}</p>{% endif %}
     <script type="application/json" id="globe-data">{{ globe | jsonify }}</script>
     <script src="{{ base_path }}/assets/js/globe.js" defer></script>
