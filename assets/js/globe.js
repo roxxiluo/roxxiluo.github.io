@@ -197,6 +197,24 @@
     // The globe lives in a scrolling sidebar, so leave the wheel to the page.
     controls.enableZoom = false;
 
+    function updateLabelSize() {
+      var view = globe.pointOfView();
+      var expanded = wrapper && fullscreenElement() === wrapper;
+      var width = Math.max(measure(container), MIN_SIZE);
+      var baseSize = width / (expanded ? 42 : 34);
+      var altitude = Math.max(0.28, view.altitude || 2.4);
+      var zoomScale = Math.pow(2.4 / altitude, 0.55);
+      var minSize = expanded ? 7 : 5;
+      var maxSize = expanded ? 18 : 10;
+      var fontSize = Math.max(minSize, Math.min(maxSize, baseSize * zoomScale));
+
+      if (wrapper) {
+        wrapper.style.setProperty('--globe-label-size', fontSize.toFixed(2) + 'px');
+      }
+    }
+
+    controls.addEventListener('change', updateLabelSize);
+
     // Explicit wheel handling makes fullscreen zoom reliable across browser
     // versions even when the underlying Three.js controls miss the first
     // fullscreen state change.
@@ -214,6 +232,7 @@
         lng: view.lng,
         altitude: nextAltitude
       }, 0);
+      updateLabelSize();
     }, { passive: false });
 
     globe.pointOfView({
@@ -225,6 +244,7 @@
     new ResizeObserver(function () {
       var next = Math.max(measure(container), MIN_SIZE);
       globe.width(next).height(next);
+      updateLabelSize();
     }).observe(container);
 
     container.classList.add('is-ready');
@@ -235,8 +255,11 @@
         // Fullscreen mode enables wheel zoom and touch pinch zoom.
         controls.enableZoom = expanded;
         controls.enablePan = expanded;
+        requestAnimationFrame(updateLabelSize);
       });
     }
+
+    updateLabelSize();
   }
 
   function boot() {
