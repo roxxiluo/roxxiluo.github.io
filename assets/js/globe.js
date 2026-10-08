@@ -202,6 +202,25 @@
     // The globe lives in a scrolling sidebar, so leave the wheel to the page.
     controls.enableZoom = false;
 
+    // Explicit wheel handling makes fullscreen zoom reliable across browser
+    // versions even when the underlying Three.js controls miss the first
+    // fullscreen state change.
+    container.addEventListener('wheel', function (event) {
+      if (!wrapper || fullscreenElement() !== wrapper) {
+        return;
+      }
+      event.preventDefault();
+      event.stopPropagation();
+
+      var view = globe.pointOfView();
+      var nextAltitude = Math.max(0.28, Math.min(4, view.altitude * Math.exp(event.deltaY * 0.0015)));
+      globe.pointOfView({
+        lat: view.lat,
+        lng: view.lng,
+        altitude: nextAltitude
+      }, 0);
+    }, { passive: false });
+
     globe.pointOfView({
       lat: typeof focus.lat === 'number' ? focus.lat : 25,
       lng: typeof focus.lng === 'number' ? focus.lng : 110,
